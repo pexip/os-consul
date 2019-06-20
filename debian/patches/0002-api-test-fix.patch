@@ -1,0 +1,103 @@
+diff --git a/api/api_test.go b/api/api_test.go
+index 7934ed8..a3d8393 100644
+--- a/api/api_test.go
++++ b/api/api_test.go
+@@ -464,7 +464,7 @@ func TestAPI_DefaultConfig_env(t *testing.T) {
+ }
+ 
+ func TestAPI_SetupTLSConfig(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	// A default config should result in a clean default client config.
+ 	tlsConfig := &TLSConfig{}
+ 	cc, err := SetupTLSConfig(tlsConfig)
+@@ -568,7 +568,7 @@ func TestAPI_SetupTLSConfig(t *testing.T) {
+ }
+ 
+ func TestAPI_ClientTLSOptions(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	// Start a server that verifies incoming HTTPS connections
+ 	_, srvVerify := makeClientWithConfig(t, nil, func(conf *testutil.TestServerConfig) {
+ 		conf.CAFile = "../test/client_certs/rootca.crt"
+@@ -677,7 +677,7 @@ func TestAPI_ClientTLSOptions(t *testing.T) {
+ }
+ 
+ func TestAPI_SetQueryOptions(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	c, s := makeClient(t)
+ 	defer s.Stop()
+ 
+@@ -732,7 +732,7 @@ func TestAPI_SetQueryOptions(t *testing.T) {
+ }
+ 
+ func TestAPI_SetWriteOptions(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	c, s := makeClient(t)
+ 	defer s.Stop()
+ 
+@@ -752,7 +752,7 @@ func TestAPI_SetWriteOptions(t *testing.T) {
+ }
+ 
+ func TestAPI_RequestToHTTP(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	c, s := makeClient(t)
+ 	defer s.Stop()
+ 
+@@ -775,7 +775,7 @@ func TestAPI_RequestToHTTP(t *testing.T) {
+ }
+ 
+ func TestAPI_ParseQueryMeta(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	resp := &http.Response{
+ 		Header: make(map[string][]string),
+ 	}
+@@ -804,7 +804,7 @@ func TestAPI_ParseQueryMeta(t *testing.T) {
+ }
+ 
+ func TestAPI_UnixSocket(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	if runtime.GOOS == "windows" {
+ 		t.SkipNow()
+ 	}
+@@ -834,7 +834,7 @@ func TestAPI_UnixSocket(t *testing.T) {
+ }
+ 
+ func TestAPI_durToMsec(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	if ms := durToMsec(0); ms != "0ms" {
+ 		t.Fatalf("bad: %s", ms)
+ 	}
+@@ -853,7 +853,7 @@ func TestAPI_durToMsec(t *testing.T) {
+ }
+ 
+ func TestAPI_IsRetryableError(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 	if IsRetryableError(nil) {
+ 		t.Fatal("should not be a retryable error")
+ 	}
+@@ -872,7 +872,7 @@ func TestAPI_IsRetryableError(t *testing.T) {
+ }
+ 
+ func TestAPI_GenerateEnv(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 
+ 	c := &Config{
+ 		Address:   "127.0.0.1:8500",
+@@ -907,7 +907,7 @@ func TestAPI_GenerateEnv(t *testing.T) {
+ }
+ 
+ func TestAPI_GenerateEnvHTTPS(t *testing.T) {
+-	t.Parallel()
++	// t.Parallel()
+ 
+ 	c := &Config{
+ 		Address:   "127.0.0.1:8500",

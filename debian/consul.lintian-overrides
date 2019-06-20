@@ -1,0 +1,6 @@
+# Staticaly linked because Golang
+consul binary: statically-linked-binary usr/bin/consul
+
+# Not an official Debian package
+consul binary: new-package-should-close-itp-bug
+consul binary: binary-without-manpage usr/bin/consul

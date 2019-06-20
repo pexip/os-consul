@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+#DEBHELPER#
+
+if [ "$1" = "purge" ]; then
+    deluser --system consul || true
+    rm -rf /var/lib/consul || true
+fi

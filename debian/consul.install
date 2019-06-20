@@ -1,0 +1,1 @@
+debian/etc_consul.d/*    /etc/consul.d/

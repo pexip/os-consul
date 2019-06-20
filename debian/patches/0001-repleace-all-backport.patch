@@ -1,0 +1,13 @@
+diff --git a/command/connect/envoy/envoy_test.go b/command/connect/envoy/envoy_test.go
+index df9b886..7a33350 100644
+--- a/command/connect/envoy/envoy_test.go
++++ b/command/connect/envoy/envoy_test.go
+@@ -383,7 +392,7 @@ func TestGenerateConfig(t *testing.T) {
+ 	copyAndReplaceAll := func(s []string, old, new string) []string {
+ 		out := make([]string, len(s))
+ 		for i, v := range s {
+-			out[i] = strings.ReplaceAll(v, old, new)
++			out[i] = strings.Replace(v, old, new, -1)
+ 		}
+ 		return out
+ 	}

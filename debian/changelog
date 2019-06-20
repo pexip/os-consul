@@ -1,0 +1,5 @@
+consul (1.5.1-1) pexip; urgency=medium
+
+  * Initial release
+
+ -- Mikhail Fludkov <misha@pexip.com>  Thu, 06 Jun 2019 09:41:53 +0000

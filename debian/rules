@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+export DH_VERBOSE = 1
+
+%:
+	dh $@ --with systemd
+
+override_dh_auto_build:
+	mkdir -p ./build/gopath
+	mkdir -p ./build/gocache
+	mkdir -p ./vendor/github.com/hashicorp/consul
+	ln -s ../../../../api ./vendor/github.com/hashicorp/consul/api
+	ln -s ../../../../sdk ./vendor/github.com/hashicorp/consul/sdk
+	env PATH=$$PATH:/usr/lib/go-1.11/bin \
+		CGO_ENABLED=0 \
+		GOPATH=$$PWD/build/gopath \
+		GOCACHE=$$PWD/build/gocache \
+		GOOS=linux \
+		GOARCH=amd64 \
+		go install \
+			-mod=vendor \
+			-ldflags="-X github.com/hashicorp/consul/version.GitCommit=40cec98+CHANGES -X github.com/hashicorp/consul/version.GitDescribe=v1.5.1"
+
+override_dh_auto_install:
+	dh_install ./build/gopath/bin/consul /usr/bin
+
+override_dh_installinit:
+	dh_installinit --noscripts
+
+override_dh_auto_test:
+	# Debian maintainers tried to make the tests stable and eventually gave up.
+	# Tests take ~20 minutes to finish & very racy. I gave up too, disabling for now
+	#	env PATH=$$PATH:/usr/lib/go-1.11/bin:$$PWD/build/gopath/bin \
+	#		GOPATH=$$PWD/build/gopath \
+	#		GOCACHE=$$PWD/build/gocache \
+	#		GOFLAGS='-mod=vendor' \
+	#		go test -v -short -timeout 9m -p 3 -parallel 4 -tags '' -failfast ./... ./api/... ./sdk/...
