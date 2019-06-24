@@ -3,3 +3,4 @@
 ## [err|warn|info|debug|trace]
 
 log_level = "info"
+enable_syslog = true
