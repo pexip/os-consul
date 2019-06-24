@@ -3,6 +3,7 @@ Description=Consul agent
 Documentation=https://www.consul.io/docs/
 After=network-online.target
 Wants=network-online.target
+ConditionFileNotEmpty=/etc/consul.d/01-config.json
 
 [Service]
 Environment="DAEMON_ARGS=-data-dir=/var/lib/consul -config-dir=/etc/consul.d"
