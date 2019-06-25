@@ -9,8 +9,6 @@ case $1 in
         fi
         chown consul:consul /var/lib/consul
         chmod u+rwX,go-rwX  /var/lib/consul
-	chown consul:pexboot /etc/consul.d
-	chmod 770 /etc/consul.d
     ;;
 esac
 
