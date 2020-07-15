@@ -1,3 +1,9 @@
+consul (1.5.1-2) pexip; urgency=medium
+
+  * Rebuild in buster environment
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Wed, 15 Jul 2020 17:32:14 +0000
+
 consul (1.5.1-1) UNRELEASED; urgency=medium
 
   [ Gregorio Di Stefano ]
